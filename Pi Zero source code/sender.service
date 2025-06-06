@@ -1,0 +1,15 @@
+[Unit]
+Description=My sender python file
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/raspberrypi/sender.py
+WorkingDirectory=/home/raspberrypi
+StandardOutput=journal
+StandardError=journal
+Restart=always
+User=raspberrypi
+Group=raspberrypi
+
+[Install]
+WantedBy=default.target

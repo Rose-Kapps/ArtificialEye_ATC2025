@@ -1,0 +1,19 @@
+[Unit]
+Description=Launch the main script in the virtual environment
+After=graphical.target network-online.target
+Wants=network-online.target
+
+[Service]
+User=raspberrypi
+Group=raspberrypi
+WorkingDirectory=/home/raspberrypi
+Environment="VIRTUAL_ENV=/home/raspberrypi/artificialeyeVE"
+Environment="PATH=/home/raspberrypi/artificialeyeVE/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Environment="DISPLAY=:0"
+ExecStart=/home/raspberrypi/artificialeyeVE/bin/python3 /home/raspberrypi/Documents/main.py
+StandardOutput=file:/home/raspberrypi/stdout.log
+StandardError=file:/home/raspberrypi/stderr.log
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
